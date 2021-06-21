@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title %}CompuConta - Mesa de Ayuda{% endblock %}
+{% block body %}
+    <style>
+        .label{width: 100px}
+    </style>
+    {{ parent() }}
+    <div class="container-fluid">
+        <div class="col-12" style="margin: 50px auto">
+            {{ form_start(form) }}
+            <div class="col-8">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                {{ form_label(form.fecha,form.fecha, {'label_attr' : {'class' : 'input-group-text label' }} ) }}
+                            </div>
+                            {{ form_widget(form.fecha, {'attr' : {'class' : 'form-control', 'disabled' : true}}) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                {{ form_label(form.hora,form.hora, {'label_attr' : {'class' : 'input-group-text label' }} ) }}
+                            </div>
+                            {{ form_widget(form.hora, {'attr' : {'class' : 'form-control', 'disabled' : true}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                {{ form_label(form.usuario_cliente,form.usuario_cliente, {'label_attr' : {'class' : 'input-group-text label' }} ) }}
+                            </div>
+                            {{ form_widget(form.usuario_cliente, {'attr' : {'class' : 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                {{ form_label(form.modulo,form.modulo, {'label_attr' : {'class' : 'input-group-text label' }} ) }}
+                            </div>
+                            {{ form_widget(form.modulo, {'attr' : {'class' : 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                {{ form_label(form.solicitud,form.solicitud, {'label_attr' : {'class' : 'input-group-text label' }} ) }}
+                            </div>
+                            {{ form_widget(form.solicitud, {'attr' : {'class' : 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                {{ form_label(form.detalle,form.detalle, {'label_attr' : {'class' : 'input-group-text label' }} ) }}
+                            </div>
+                            {{ form_widget(form.detalle, {'attr' : {'class' : 'form-control'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <input class='btn btn-primary' type="submit" name="login" value="Guardar" />
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+{%  endblock %}
+
+

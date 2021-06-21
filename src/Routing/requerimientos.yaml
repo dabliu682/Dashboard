@@ -1,0 +1,16 @@
+requerimientos_listar:
+  path: /
+  defaults: {_controller: App\Controller\RequerimientoController::listarRequerimientos}
+
+requerimiento_nuevo:
+  path: /nuevoRequerimiento
+  defaults: {_controller: App\Controller\RequerimientoController::nuevoRequerimiento}
+
+requerimiento_guardar:
+  path: /guardarRequerimiento
+  defaults: {_controller: App\Controller\RequerimientoController::guardarRequerimiento}
+
+requerimiento_ver:
+  path: /verRequerimiento
+  defaults: {_controller: App\Controller\RequerimientoController::verRequerimiento}
+
