@@ -21,8 +21,8 @@ final class Version20210618210211 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA requerimientos');
-        $this->addSql('CREATE SEQUENCE requerimientos.requeriminetos_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE requerimientos.requeriminetos (id INT NOT NULL, fecha_registro TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, usuario_cliente VARCHAR(255) NOT NULL, modulo VARCHAR(255) NOT NULL, solicitud VARCHAR(255) NOT NULL, detalle TEXT NOT NULL, usuario_soporte VARCHAR(255) DEFAULT NULL, fecha_asignacion TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, fecha_cierre TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE SEQUENCE requerimientos.requerimientos_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
+        $this->addSql('CREATE TABLE requerimientos.requerimientos (id INT NOT NULL, fecha_registro TIMESTAMP(0) WITHOUT TIME ZONE NOT NULL, usuario_cliente VARCHAR(255) NOT NULL, modulo VARCHAR(255) NOT NULL, solicitud VARCHAR(255) NOT NULL, detalle TEXT NOT NULL, usuario_soporte VARCHAR(255) DEFAULT NULL, fecha_asignacion TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, fecha_cierre TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema): void

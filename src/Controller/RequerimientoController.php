@@ -7,6 +7,7 @@ use App\Forms\requerimientoType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\HttpFoundation\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class RequerimientoController extends AbstractController
 {
@@ -17,36 +18,41 @@ class RequerimientoController extends AbstractController
 
         $reqs = $bd->getRepository(Requerimientos::class)->findAll();
 
-        foreach($reqs as $req)
+        $textFecha='';
+
+        if (isEmpty($reqs))
         {
-            $fecha1 = $req->getFechaRegistro();
-            $fecha2 = new \DateTime('now');
-            $fecha = $fecha1->diff($fecha2);
-
-            if ($fecha->d <= 0)
+            foreach($reqs as $req)
             {
-                $textFecha = $fecha->h.' horas'.' '.$fecha->i.' minutos';
+                $fecha1 = $req->getFechaRegistro();
+                $fecha2 = new \DateTime('now');
+                $fecha = $fecha1->diff($fecha2);
 
-                if($fecha->h <= 0)
+                if ($fecha->d <= 0)
                 {
-                    $textFecha = $fecha->i.' minutos';
+                    $textFecha = $fecha->h.' horas'.' '.$fecha->i.' minutos';
+
+                    if($fecha->h <= 0)
+                    {
+                        $textFecha = $fecha->i.' minutos';
+                    }
+                }
+                else
+                {
+                    $textFecha = $fecha->d. ' dias'.' '.$fecha->h.' horas'.' '.$fecha->i.' minutos';
+                }
+
+                $req->textFecha=$textFecha;
+
+                if ($fecha1->modify('+48 hours') <= $fecha2)
+                {
+                    $req->vence=true;
+                }
+                else
+                {
+                    $req->vence=false;
                 }
             }
-            else
-            {
-                $textFecha = $fecha->d. ' dias'.' '.$fecha->h.' horas'.' '.$fecha->i.' minutos';
-            }
-
-           $req->textFecha=$textFecha;
-
-           if ($fecha1->modify('+48 hours') <= $fecha2)
-           {
-               $req->vence=true;
-           }
-           else
-           {
-               $req->vence=false;
-           }
         }
 
         return $this->render('Requerimiento/index.html.twig', array('textFecha'=> $textFecha,'requerimientos' => $reqs));
